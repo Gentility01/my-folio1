@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Post Page  -->
+    <section class="section-padding post-page">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-12">
+                    <div class="blog-post-categorydate-wrapper">
+                        <a href="blog.html">
+                            <div>Blog</div>
+                        </a>
+                        <div class="blog-post-categorydate-divider"></div>
+                        <div>{{ news.created_at|date:"d, m, Y"}}</div>
+                    </div>
+                    <h1>{{ news.name}}.</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"> <img src="{{ news.thumbnail.url }}" class="mb-30 img-fluid" alt="" style="height: 400px;">
+                    
+                    <p>{{ news.description|safe}}.</p>
+                    <div class="blog-comment-section">
+                        <div class="row">
+                            <!-- Comment -->
+                            <div class="col-md-6">
+                                <div class="blog-post-comment-wrap">
+                                    <div class="blog-post-user-comment"> <img src="images/team/1.jpg" alt=""> </div>
+                                    <div class="blog-post-user-content">
+                                        <h3>Polina Viola &nbsp;&nbsp;<span>29 Dec 2022</span></h3>
+                                        <p>Design in the ultricies nibh non dolor maximus miss inte molliser faubs neque nec tincidunte aliquam eraten volutpat seraese in the tempore. </p> <a class="blog-post-repay" href="#">Reply<i class="ti-back-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Contact Form -->
+                            <div class="col-md-5 offset-md-1">
+                                <h3>Leave a Reply</h3>
+                                <form method="post" class="contact__form" action="">
+                                    <!-- Form message -->
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
+                                        </div>
+                                    </div>
+                                    <!-- Form elements -->
+                                    <div class="row">
+                                        <div class="col-md-12 form-group">
+                                            <input name="name" type="text" placeholder="Full Name *" required="">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input name="email" type="email" placeholder="Email Address *" required="">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <textarea name="message" id="message" cols="30" rows="4" placeholder="Your Comment *" required=""></textarea>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="btn-wrap">
+                                                <div class="btn-link">
+                                                    <input type="submit" value="Send Comment"> <span class="btn-block color1 animation-bounce"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testiominals -->
+    {% include 'pages/testimonia.html' %}
+    <!-- Clients -->
+    {% include 'pages/client.html' %}
+    <!-- Footer -->
+{% endblock content %}

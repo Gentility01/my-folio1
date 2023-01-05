@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!-- Blog -->
+<section class="blog section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <h6 class="wow" data-splitting="">Recent Articles</h6>
+                <h1 class="wow" data-splitting="">From Our Blogs</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+
+                    {% for blog in blogs  %}
+                    <div class="col-md-12">
+                        <div class="item">
+                            <div class="post-img">
+                                <a href="{% url 'blogdetail' blog.slug %}"> <img src="{{ blog.image.url }}" alt=""> </a>
+                                <div class="date">
+                                    <a href="{% url 'blogdetail' blog.slug %}"> <span>{{ blog.created_at|date:"Y"}}</span> <i>{{ blog.created_at|date:"m"}}</i> </a>
+                                </div>
+                            </div>
+                            <div class="post-cont">
+                                <div class="blog-post-categorydate-wrapper">
+                                    <a href="blog.html">
+                                        <div>Blog</div>
+                                    </a>
+                                    <div class="blog-post-categorydate-divider"></div>
+                                    <div>UX Design</div>
+                                </div>
+                                <h4><a href="{% url 'blogdetail' blog.slug %}">{{ blog.name}}.</a></h4>
+                                <p>{{ blog.description|striptags|truncatewords:50|slice:":-4" }} <a href=""> <button
+                                            class="btn btn-sm">read more</button></a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+
+
+                    <div class="col-md-12">
+                        <!-- Pagination -->
+                        <ul class="pagination-wrap align-center mb-30 mt-30">
+                            <li><a href="blog2.html#"><i class="ti-angle-left"></i></a></li>
+                            <li><a href="blog2.html#">1</a></li>
+                            <li><a href="blog2.html#" class="active">2</a></li>
+                            <li><a href="blog2.html#">3</a></li>
+                            <li><a href="blog2.html#"><i class="ti-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar -->
+            <div class="col-md-4">
+                <div class="row blog-sidebar">
+                    <div class="col-md-12">
+                        <div class="widget search">
+                            <form >
+                                <input type="text" name="query" placeholder="Type here ..." value='{{ request.GET.q }}'>
+                                <button type="submit"><i class="ti-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Recent Posts</h5>
+                            </div>
+                            <ul class="recent">
+                                
+                                {% for posts in recent_posts %}
+                                <li>
+                                    <div class="thum"> <img src="{{ posts.image.url}}" alt=""> </div> <a
+                                        href="{% url 'blogdetail' posts.slug %}">{{ posts.name }}.</a>
+                                </li>  
+                                {% endfor %}
+                                    
+                               
+                                
+                               
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Archives</h5>
+                            </div>
+                            <ul>
+                                <li><a href="#">December 2022</a></li>
+                                <li><a href="#">November 2022</a></li>
+                                <li><a href="#">October 2022</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Categories</h5>
+                            </div>
+                            <ul>
+                                <li><a href="blog.html"><i class="ti-angle-right"></i>Website Design</a></li>
+                                <li><a href="blog.html"><i class="ti-angle-right"></i>E-Commerce</a></li>
+                                <li><a href="blog.html"><i class="ti-angle-right"></i>Web Development</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="widget">
+                            <div class="widget-title">
+                                <h5>Tags</h5>
+                            </div>
+                            <ul class="tags">
+                                <li><a href="#">Website</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">App</a></li>
+                                <li><a href="#">Branding</a></li>
+                                <li><a href="#">Development</a></li>
+                            </ul>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testiominals -->
+{% include 'pages/testimonia.html' %}
+<!-- Clients -->
+{% include 'pages/client.html' %}
+{% endblock content %}

@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Homepage -->
+<section id="home" class="header-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="header-section-wrap">
+                    <div class="header-view-on-mobile">
+                        <h1>Douglas Chiemela .N</h1>
+                        <h6>Instructor & Creative Web Developer</h6>
+                    </div>
+                    <div class="transform-banner position-relative">
+                        <img class="img header-img header-img-left wow imago" src="{{ about_me.thumbnail.url }}" alt=""
+                            style="height:550px;">
+                    </div>
+                    <div class="header-cont header-cont-right">
+                        <div class="header-cont-absolute header-cont-absolute-right">
+                            <div class="header-not-view-on-mobile">
+                                <h1 class="wow" data-splitting="">{{about_me.name}}</h1>
+                                <h6 class="wow" data-splitting="">{{about_me.title}}</h6>
+                            </div>
+                            <div class="header-cont-text">
+                                <!-- <p class="wow" data-splitting="" style="color: #d1d3df;"> {{ about_me.description|striptags}}</p> -->
+                                <p class="" data-splitting="" style="color: #d1d3df;">
+                                    {{ about_me.description|striptags}}</p>
+                            </div>
+                            <div class="btn-wrap text-center">
+                                <div class="btn-link"> <a href="/static/images/mainfolio.pdf">Download CV <i
+                                            class="ti-download"></i></a> <span
+                                        class="btn-block color1 animation-bounce"></span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Services -->
+<section id="services" class="services clear section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-4">
+                <h6 class="wow" data-splitting="">Services That I Provide</h6>
+                <h1 class="wow" data-splitting="">Services</h1>
+            </div>
+            <div class="col-md-7 offset-md-1 mt-45">
+                <p class="wow fadeInUp" data-wow-delay=".6s">"What do we live for if not to make life less difficult for
+                    each other?" – George Eliot, Novelist. <br> We see our customers as invited guests to a party, and
+                    we are
+                    the hosts. It's our job to make the customer experience life a little bit better by our services.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="owl-carousel owl-theme">
+                    {% for service in services %}
+                    <div class="item">
+                        <a href="{{ service.get_absolute_url}}"> <span class="{{service.i_class}}"></span>
+                            <h5>{{ service.name }}</h5>
+                            <p> {{ service.description| striptags }}.</p>
+                            <div class="numb">0{{forloop.counter}}</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    <!-- <div class="item">
+                        <a href="services-page.html"> <span class="icon et-bargraph"></span>
+                            <h5>SEO Marketing</h5>
+                            <p>Website ravida surna eveti semen the conse tusio anivite dianne one nivam acestion
+                                vue artin dictum.</p>
+                            <div class="numb">02</div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="item">
+                        <a href="services-page.html"> <span class="icon et-basket"></span>
+                            <h5>eCommerce</h5>
+                            <p>Website ravida surna eveti semen the conse tusio anivite dianne one nivam acestion
+                                vue artin dictum.</p>
+                            <div class="numb">03</div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="item">
+                        <a href="services-page.html"> <span class="icon et-browser"></span>
+                            <h5>Graphic Design</h5>
+                            <p>Website ravida surna eveti semen the conse tusio anivite dianne one nivam acestion
+                                vue artin dictum.</p>
+                            <div class="numb">04</div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="item">
+                        <a href="services-page.html"> <span class="icon et-target"></span>
+                            <h5>Digital Marketing</h5>
+                            <p>Website ravida surna eveti semen the conse tusio anivite dianne one nivam acestion
+                                vue artin dictum.</p>
+                            <div class="numb">05</div>
+                        </a>
+                    </div> -->
+                    <!-- <div class="item">
+                        <a href="services-page.html"> <span class="icon et-chat"></span>
+                            <h5>Social Media</h5>
+                            <p>Website ravida surna eveti semen the conse tusio anivite dianne one nivam acestion
+                                vue artin dictum.</p>
+                            <div class="numb">06</div>
+                        </a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About & Skills -->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-7">
+                <h6 class="wow" data-splitting="">I make the future</h6>
+                <h1 class="wow" data-splitting="">I Develop & Create Digital Future.</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <p class="wow fadeInUp" data-wow-delay=".2s">“The best thing about the future is that it comes one day
+                    at a time.” – Abraham Lincoln.</p>
+                <p class="wow fadeInUp" data-wow-delay=".4s">The only thing we know about the future is that it will be
+                    different. A speculator is a man who observes the future and acts before it occurs</p>
+                <div class="btn-wrap text-left mt-45 wow fadeInUp" data-wow-delay=".6s">
+                    <div class="btn-link"> <a href="#">{{about_me.email}}</a> <span
+                            class="btn-block color1 animation-bounce"></span> </div>
+                </div>
+            </div>
+            <div class="col-md-6 offset-md-1 wow fadeInUp" data-wow-delay=".8s">
+                <!-- <p class="bar-title">Design<span class="percent align-right">90%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-design start"></div>
+                </div>
+                <p class="bar-title">Branding <span class="percent ">80%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-branding start"></div>
+                </div>
+                <p class="bar-title">Web Design<span class="percent align-right">95%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-webdesign start"></div>
+                </div>
+                <p class="bar-title">Social Media<span class="percent align-right">85%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-socialmedia start"></div>
+                </div> -->
+
+                {% for bar in progress %}
+
+                <p class="bar-title">{{ bar.title}}<span class="percent align-right">{{bar.pesentage}}%</span></p>
+                <div class="progress bar" style="height: 1px; background: #363840;">
+                    <div class="progress-bar bar-fill  start" role="progressbar"
+                        style="width: {{bar.pesentage}}%; background: #ffffff;" aria-valuenow="25" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+                {% endfor %}
+                <!-- <div class="progress" style="height: 20px;">
+                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25"
+                        aria-valuemin="0" aria-valuemax="100"></div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Portfolio -->
+<section id="portfolio" class="portfolio section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-4">
+                <h6 class="wow" data-splitting="">Our Works</h6>
+                <h1 class="wow" data-splitting="">Portfolio</h1>
+            </div>
+            <div class="col-md-7 offset-md-1 mt-45">
+                <p class="wow fadeInUp" data-wow-delay=".6s">A good portfolio is more than a long list of good stocks
+                    and bonds. It is a balanced whole, providing the investor with protections and opportunities with
+                    respect to a wide range of contingencies.</p>
+            </div>
+        </div>
+    </div>
+    <div class="full-width">
+        <div class="row">
+            <div class="col-md-12">
+                
+                <div class="owl-carousel owl-theme">
+                    {% for portfolio in portfolios %}
+                    <div class="item">
+                        <a href=" {% url 'potfoliodetail' portfolio.slug  %}">
+                            <div class="img-block">
+                                <div class="wrapper-img"> <img src="{{ portfolio.image.url}}" class="img-fluid" style="height: 300px;">
+                                </div>
+                                <div class="title-block">
+                                    <h4>{{ portfolio.title }}</h4>
+                                    <p>{{ portfolio.potfoliochoices }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Homepage Blog -->
+<section id="blog" class="homepage-blog section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <h6 class="wow" data-splitting="">Recent Articles</h6>
+                <h1 class="wow" data-splitting="">Latest News</h1>
+            </div>
+        </div>
+        <div class="row mb-30">
+
+            {% for new in news %}
+            {% if forloop.counter|divisibleby:2 %}
+
+            <div class="col-md-6">
+                <div class="img left">
+                    <a href="{% url 'newsdetail' new.slug %}"><img src="{{ new.thumbnail.url}}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-md-6 valign">
+                <div class="content">
+                    <div class="date">
+                        <h1>24</h1>
+                        <h6>June 2022</h6>
+                    </div>
+                    <div class="cont">
+                        <h5>{{new.name}}.</h5>
+                        <p>{{ new.title}}.</p>
+                        <div class="btn-wrap">
+                            <div class="btn-link"> <a href="{% url 'newsdetail' new.slug %}">Read more <i
+                                        class="ti-arrow-right"></i></a>
+                                <span class="btn-block color1 animation-bounce"></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% else%}
+        <div class="row mb-30">
+            <div class="col-md-6 order2 valign">
+                <div class="content">
+                    <div class="date">
+                        <h1>27</h1>
+                        <h6>June 2022</h6>
+                    </div>
+                    <div class="cont">
+                        <h5>{{ new.name}}.</h5>
+                        <p>{{ new.title}}</p>
+                        <div class="btn-wrap">
+                            <div class="btn-link"> <a href="{% url 'newsdetail' new.slug %}">Read more <i
+                                        class="ti-arrow-right"></i></a>
+                                <span class="btn-block color1 animation-bounce"></span> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 order1">
+                <div class="img left">
+                    <a href="{% url 'newsdetail' new.slug %}"><img src="{{ new.thumbnail.url}}" alt=""></a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+    </div>
+</section>
+{% include 'pages/testimonia.html' %}
+<!-- Clients -->
+{% include 'pages/client.html' %}
+
+
+{% endblock content %}

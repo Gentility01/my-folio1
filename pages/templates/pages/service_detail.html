@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Services Page  -->
+<section class="section-padding services-page">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12 text-center">
+                <h6 class="wow" data-splitting="">Services</h6>
+                <h1 class="wow" data-splitting="">{{ object.name}}.</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7"> <img src="{{ object.image.url}}" class="mb-45 img-fluid" alt="" style="height: 300px;">
+                <p>{{ object.description2}}.</p>
+
+                        
+                      
+
+
+
+
+                
+                    <!-- <div class="owl-carousel owl-theme"></div>
+                    {% for services in more_service %}
+                    <div class="item">
+                        <a href="{{ services.get_absolute_url}}"> <span class="{{service.i_class}}"></span>
+                            <img src="{{ services.image.url}}" alt="YouTube">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div> -->
+                
+                
+                <div class="row">
+                    <div class="col-md-12 mb-30">
+                        <h5>Frequently Asked Questions</h5>
+                    </div>
+                    <div class="col-md-12">
+                        <ul class="accordion-box clearfix">
+                            {% for question in questions %}
+                        
+                            <li class="accordion block">
+                                <div class="acc-btn"><span class="count">{{forloop.counter}}.</span> {{ question.questions}}
+                                </div>
+                                <div class="acc-content">
+                                    <div class="content">
+                                        <div class="text">{{ question.answer|safe}}</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            
+                            
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="row">
+                    <div class="col-md-12 mt-45">
+                        <h5>{{object.title}}</h5>
+                        <p>{{ object.description|striptags}}.</p>
+                        <div class="ullist">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Other Services -->
+<section class="services clear section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <h6 class="wow" data-splitting="">Services That I Provide</h6>
+                <h1 class="wow" data-splitting="">Other Services</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme">
+                    
+                   >
+                    
+                    
+                    
+                    {% for services in more_service %}
+                      
+                    <div class="item">
+                        <a href="{{ services.get_absolute_url}}"> <span class="{{services.i_class}}"></span>
+                            <h5>{{services.name}}</h5>
+                            
+                            <div class="numb">0{{forloop.counter}}</div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testiominals -->
+{% include 'pages/testimonia.html' %}
+<!-- Clients -->
+{% include 'pages/client.html' %}
+{% endblock content %}

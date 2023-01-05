@@ -1,0 +1,26 @@
+{% if page_obj.has_other_pages %}
+<div class="col-md-12">
+    <!-- Pagination -->
+    <ul class="pagination-wrap align-center mb-30 mt-30">
+        {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}"><i class="ti-angle-left"></i></a></li>
+        {% else %}
+            <li><i class="ti-angle-left"></i></li>
+        {% endif %}
+        {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+            <li><a href="" class="active">{{i}}</a></li>
+        {% else %}
+            <li><a href="?page={{ i }}" >{{i}}</a></li>
+        {% endif %}
+        {% endfor %}
+        <!-- <li><a href="blog2.html#" class="active">2</a></li>
+        <li><a href="blog2.html#">3</a></li> -->
+        {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}"><i class="ti-angle-right"></i></a></li>
+        {% else %}
+            <li><i class="ti-angle-right"></i></li>
+        {% endif %}
+    </ul>
+</div>
+{% endif %}

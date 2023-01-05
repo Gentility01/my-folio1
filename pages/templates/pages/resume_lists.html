@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- About  -->
+<section id="about" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h6 class="wow" data-splitting="">About Me</h6>
+                <h1 class="wow" data-splitting="">I Create Digital Future.</h1>
+                <p class="mt-45 wow fadeInUp" data-wow-delay=".3s">{{about_me.description|safe}}</p>
+                <p class="wow fadeInUp" data-wow-delay=".6s">“The best thing about the future is that it comes one day
+                    at a time.” – Abraham Lincoln.</p>
+                <div class="btn-wrap wow fadeInUp text-left mt-45 mb-45" data-wow-delay=".9s">
+                    <div class="btn-link"> <a href="#">{{ about_me.email}} </a> <span
+                            class="btn-block color1 animation-bounce"></span> </div>
+                </div>
+            </div>
+            <div class="col-md-5 offset-md-1">
+                <div class="reveal-effect"> <img src="{{about_me.resume_photo.url}}" class="img-fluid" alt=""> </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Resume -->
+<section id="resume" class="resume section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <h6 class="wow" data-splitting="">Experience & Education</h6>
+                <h1 class="wow" data-splitting="">My Resume</h1>
+            </div>
+        </div>
+        <div class="row mt-45">
+            <div class="col-md-5">
+                <div class="o-hidden full-width">
+                    <div class="profile mb-45">
+                        <div class="block">
+                            <h4>Experience</h4>
+
+                            {% for experience in experiences %}
+                            <div class="item">
+                                <h5>{{ experience.name_of_place}}.<span>{{ experience.date_started| date:"Y"}} -
+                                        {% if experience.date_stopped is Null %}
+                                        present
+                                        {% else %}
+                                        {{ experience.date_stopped| date:"Y"}}
+
+                                        {% endif %}
+                                    </span></h5>
+                                <p>{{ experience.work_as}}</p>
+                            </div>
+                            {% endfor %}
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 offset-md-2 valign">
+                <div class="o-hidden full-width">
+                    <div class="profile">
+                        <div class="block">
+                            <h4>Education</h4>
+                           
+                           {% for school  in schools %}
+                           <div class="item">
+                            <h5>{{ school.name_of_school}} <span>{{ school.date_started| date:"Y"}} - 
+                                
+                                {% if school.date_stopped is Null %}
+                                present
+                                {% else %}
+                                {{ school.date_stopped| date:"Y"}}
+                                    
+                                {% endif %}
+                                    
+                            </span></h5>
+                            <p>of {{school.place}}.</p>
+                            <p style="margin-top: -20px;">studied {{school.course}}.</p>
+                        </div>
+                           {% endfor %}
+                            
+                            
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Skills -->
+<section id="skills" class="section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-8">
+                <h6 class="wow" data-splitting="">My Top</h6>
+                <h1 class="wow" data-splitting="">Skills.</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <p class="wow fadeInUp" data-wow-delay=".3s">“The best thing about the future is that it comes one day at a time.” – Abraham Lincoln.
+
+                    The only thing we know about the future is that it will be different. A speculator is a man who observes the future and acts before it occurs.
+                </p>
+                <p class="wow fadeInUp" data-wow-delay=".6s">Nullam ac dui eget turpis pulvinar porta et et libero.
+                    Mauris hendrerit justo ac lorem pellentesque dictum.</p>
+            </div>
+            <div class="col-md-6 offset-md-1 wow fadeInUp" data-wow-delay=".9s">
+                <!-- <p class="bar-title">Design<span class="percent align-right">40%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-design start"></div>
+                </div>
+                <p class="bar-title">Branding <span class="percent align-right">80%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-branding start"></div>
+                </div>
+                <p class="bar-title">Web Design<span class="percent align-right">95%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-webdesign start"></div>
+                </div>
+                <p class="bar-title">Social Media<span class="percent align-right">85%</span></p>
+                <div class="bar">
+                    <div class="bar-fill bar-fill-socialmedia start"></div>
+                </div> -->
+                {% for bar in progress %}
+
+                <p class="bar-title">{{ bar.title}}<span class="percent align-right">{{bar.pesentage}}%</span></p>
+                <div class="progress bar" style="height: 1px; background: #363840;">
+                    <div class="progress-bar bar-fill  start" role="progressbar"
+                        style="width: {{bar.pesentage}}%; background: #ffffff;" aria-valuenow="25" aria-valuemin="0"
+                        aria-valuemax="100"></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Testiominals -->
+{% include 'pages/testimonia.html' %}
+<!-- Clients -->
+{% include 'pages/client.html' %}
+<!-- Footer -->
+{% endblock content %}

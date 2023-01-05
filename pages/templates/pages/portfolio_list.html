@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Portfolio -->
+    <section class="portfolio section-padding">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-4">
+                    <h6 class="wow" data-splitting="">Our Works</h6>
+                    <h1 class="wow" data-splitting="">Portfolio</h1>
+                </div>
+                <div class="col-md-7 offset-md-1 mt-45">
+                    <p class="wow fadeInUp" data-wow-delay=".6s">A good portfolio is more than a long list of good stocks
+                        and bonds. It is a balanced whole, providing the investor with protections and opportunities with
+                        respect to a wide range of contingencies.</p>
+                </div>
+            </div>
+            <div class="row">
+                
+                {% for portfolio in portfolios %}
+                <div class="col-md-4">
+                    <div class="item mb-30">
+                        <a href="{% url 'potfoliodetail' portfolio.slug %}">
+                            <div class="img-block">
+                                <div class="wrapper-img"> <img src="{{ portfolio.image.url}}" class="img-fluid"> </div>
+                                <div class="title-block">
+                                    <h4> 00{{ forloop.counter }}</h4>
+                                    <p>{{ portfolio.title }}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                    
+                {% endfor %}
+                    
+                
+                
+            </div>
+        </div>
+    </section>
+    <!-- Testiominals -->
+    {% include 'pages/testimonia.html' %}
+    <!-- Clients -->
+    {% include 'pages/client.html' %}
+  {% endblock content %}

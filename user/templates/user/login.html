@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Contact  -->
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <!-- <h6>Get in touch</h6> -->
+                <h1 style="text-align: center;">Sign in</h1>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="container">
+                <div class="col-md-12 ">
+
+                    <form method="post" role="form">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                        <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                            <strong>Error!</strong> {{ form.errors }}.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endif %}
+                        <!-- Form elements -->
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <label>{{ form.username.label}}</label>
+
+                                {{ form.username}}
+                            </div>
+
+                            <div class="col-md-12 form-group">
+                                <label>{{ form.password.label}}</label>
+                                {{ form.password }}
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <div class="btn-wrap">
+                                    <div class="btn-link">
+
+                                        <button type="submit"> Submit </button> <span
+                                            class="btn-block color1 animation-bounce"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <br>
+                <div class="col-md-12">
+                  
+                            <p>Don't  have an account? <a href="{% url 'signup' %}"><b>Signup here</b></a></p>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+{% endblock content %}

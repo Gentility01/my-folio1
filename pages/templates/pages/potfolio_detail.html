@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Portfolio Page  -->
+    <section class="section-padding portfolio-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7">
+                    <!-- Images -->
+                    <div class="row">
+                        <div class="col-md-12 gallery-item">
+                            <div class="owl-carousel owl-theme text-center">
+                                {% for image in images %}
+                                <div class="item">  
+                                    <div class="gallery-item-inner">
+                                        <a href="{{ image.files.url}}" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img"> <img src="{{ image.files.url}}" class="img-fluid mx-auto d-block" alt="" style="height: 500px;"> </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    
+                                </div>
+                                {% endfor %}
+                                <!-- <div class="item">
+                                    <div class="gallery-item-inner">
+                                        <a href="images/portfolio/2.jpg" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img"> <img src="images/portfolio/2.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="item">
+                                    <div class="gallery-item-inner">
+                                        <a href="images/portfolio/3.jpg" title="" class="img-zoom">
+                                            <div class="gallery-box">
+                                                <div class="gallery-img"> <img src="images/portfolio/3.jpg" class="img-fluid mx-auto d-block" alt=""> </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 offset-md-1">
+                    <h6 class="wow" data-splitting="">Design</h6>
+                    <h1 class="wow" data-splitting="">{{ object.title }}</h1>
+                    <p class="mt-45 wow fadeInUp" data-wow-delay=".1s">{{ object.description|safe}}.</p>
+                    <p class="mt-45 wow fadeInUp" data-wow-delay=".2s"><span>Date :</span> {{ object.date_created|date:"M,d,Y"}}</p>
+                    <p class="wow fadeInUp" data-wow-delay=".3s"><span>Client :</span> {{object.client}}</p>
+                    <p class="wow fadeInUp" data-wow-delay=".3s"><span>Firm Name :</span> {{object.firm_name}}</p>
+                    <p class="wow fadeInUp" data-wow-delay=".3s"><span>Category :</span> 
+                        
+                        {% for tag in tags %}
+                            {{ tag.name }}
+                            {% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                            
+                    </p>
+                    <div class="btn-wrap wow fadeInUp text-left mt-45" data-wow-delay=".9s">
+                        
+                        {% if object.live_website is  None %}
+                        <!-- <div class="btn-link"> <a href="{{ object.live_website }}">Live website <i class="ti-arrow-top-right"></i> </a> <span class="btn-block color1 animation-bounce"></span> </div> -->
+                        {% else %}
+                        <div class="btn-link"> <a href="{{ object.live_website }}">Live website <i class="ti-arrow-top-right"></i> </a> <span class="btn-block color1 animation-bounce"></span> </div>
+                        {% endif %}
+                            
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Next & Prev -->
+    <section class="nex-prv">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 rest">
+                  {% if object.get_previous_by_created_at %}
+                    <div class="prv">
+                        <div class="img bg-img" data-background="{{ object.get_previous_by_created_at.image.url }}">
+                            <div class="text-left ontop">
+                                <h5><a href="{% url 'potfoliodetail' object.get_previous_by_created_at.slug %}">{{object.get_previous_by_created_at.name}}</a></h5> <span class="sub-title mb-0 mt-10">Prev Project</span>
+                            </div>
+                            <div class="overly"></div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                </div>
+                <div class="col-md-2 text-center rest">
+                    <a href="{% url 'portfolio_list' %}" class="all-works d-flex align-items-center"> <span class="icon full-width ti-layout-grid3"></span> </a>
+                </div>
+                {% if object.get_next_by_created_at %}
+                <div class="col-md-5 rest">
+                    <div class="nxt">
+                        <div class="img bg-img" data-background="{{ object.get_next_by_created_at.image.url }}">
+                            <div class="text-right ontop">
+                                <h5><a href="{% url 'potfoliodetail' object.get_next_by_created_at.slug %}">{{ object.get_next_by_created_at.name }}</a></h5> <span class="sub-title mb-0 mt-10">Next Project</span>
+                            </div>
+                            <div class="overly"></div>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+    <!-- Testiominals -->
+    {% include 'pages/testimonia.html' %}
+    <!-- Clients -->
+    {% include 'pages/client.html' %}
+  {% endblock content %}

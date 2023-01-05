@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Post Page  -->
+    <section class="section-padding post-page">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-md-12">
+                    <div class="blog-post-categorydate-wrapper">
+                        <a href="blog.html">
+                            <div>Blog</div>
+                        </a>
+                        <div class="blog-post-categorydate-divider"></div>
+                        <div>{{ blogs.created_at|date:"d,m,Y"}}</div>
+                    </div>
+                    <h1>{{ blogs.name}}.</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12"> <img src="{{ blogs.image.url }}" class="mb-30 img-fluid" alt="" style="height: 300px;">
+                    <div class="row">
+                        
+                        {% for image in images %}
+                        <div class="col-md-6">
+                            <div class="vid-area mb-30">
+                                <div class="vid-icon"> <img src="{{ image.files.url }}" alt="YouTube" style="height: 200px;">
+                                    <a class="video-gallery-button vid"> <span class="video-gallery-polygon">
+                                            <i class="ti-control-play"></i>
+                                        </span> </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                            
+                        
+                        
+                    </div>
+                    <p>{{ blogs.description|safe}}.</p>
+                    <div class="blog-comment-section">
+                        <div class="row">
+                            <!-- Comment -->
+                            {% for comment in comments %}
+                              
+                            <div class="col-md-6">
+                                <div class="blog-post-comment-wrap">
+                                   
+                                    <div class="blog-post-user-comment">
+                                        
+                                        {% if comment.author.avatar  %}
+                                         <img src="{{ comment.author.avatar.url}}" alt="">
+                                         {% else %}
+                                         <img src="{% static 'images/avatar.svg' %}" alt="">
+                                         {% endif %}
+
+                                         
+                                         </div>
+                                    
+                                    <div class="blog-post-user-content">
+                                        <h3>{{ comment.author.username}} &nbsp;&nbsp;<span>{{ comment.created|date:"d,m,Y"}}</span></h3>
+                                        <p>{{ comment.body}} </p> <a class="blog-post-repay" href="#">Reply<i class="ti-back-left"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- Contact Form -->
+                            <div class="col-md-5 offset-md-1">
+                                <h3>Leave a Reply</h3>
+                                <form method="post" role="form">
+                                    {% csrf_token %}
+                                    <!-- Form message -->
+                                    <!-- <div class="row">
+                                        <div class="col-12">
+                                            <div class="alert alert-success contact__msg" style="display: none" role="alert"> Your message was sent successfully. </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- Form elements -->
+                                    <div class="row">
+                                        <!-- <div class="col-md-12 form-group">
+                                            <input name="name" type="text" placeholder="Full Name *" required="">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <input name="email" type="email" placeholder="Email Address *" required="">
+                                        </div>
+                                        <div class="col-md-12 form-group">
+                                            <textarea name="message" id="message" cols="30" rows="4" placeholder="Your Comment *" required=""></textarea>
+                                        </div> -->
+                                        {{ comment_form.body }}
+                                        <div class="col-md-12">
+                                            <div class="btn-wrap">
+                                                <div class="btn-link">
+                                                    <input type="submit" value="Send Comment"> <span class="btn-block color1 animation-bounce"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Testiominals -->
+    {% include 'pages/testimonia.html' %}
+    <!-- Clients -->
+    {% include 'pages/client.html' %}
+    {% endblock content %}

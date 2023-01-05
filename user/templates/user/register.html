@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Contact  -->
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row mb-45">
+            <div class="col-md-12">
+                <!-- <h6>Get in touch</h6> -->
+                <h1 style="text-align: center;">Sign up</h1>
+            </div>
+        </div>
+        <div class="row">
+            <!-- <div class="col-md-6 mb-45">
+                    <div class="item">
+                        <div class="wrap-block"> <span class="icon et-phone"></span>
+                            <div class="text-block">
+                                <h5>Phone</h5>
+                                <p>+1 800 845 00 00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="wrap-block"> <span class="icon et-map-pin"></span>
+                            <div class="text-block">
+                                <h5>Address</h5>
+                                <p>750 St, Office 1138, San Francisco, CA 94108</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="wrap-block"> <span class="icon et-notebook"></span>
+                            <div class="text-block">
+                                <h5>E-Mail</h5>
+                                <p>hello@dbrown.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            <div class="container">
+                <div class="col-md-12 ">
+                    <!-- Form message -->
+                    {% if form.errors %}
+                    <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                        <strong>Error!</strong> {{ form.errors }}.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endif %}
+
+                    <form method="post" role="form">
+
+                        {% csrf_token %}
+                        <!-- Form elements -->
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+
+                                {{ form.username}}
+                            </div>
+
+                            <div class="col-md-6 form-group">
+
+                                {{ form.email}}
+                            </div>
+
+                            <div class="col-md-6 form-group">
+
+                                {{ form.phone}}
+                            </div>
+
+                            <div class="col-md-12 form-group">
+
+                                {{ form.password1 }}
+                            </div>
+
+                            <div class="col-md-12 form-group">
+
+                                {{ form.password2}}
+                            </div><br>
+
+                            <div class="col-md-12">
+                                <div class="btn-wrap">
+                                    <div class="btn-link">
+
+                                        <button type="submit"> Submit </button> <span
+                                            class="btn-block color1 animation-bounce"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-12">
+                  
+                    <p>Do you  have an account? <a href="{% url 'signin' %}"><b>Signin here</b></a></p>
+          
+        </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+{% endblock content %}
