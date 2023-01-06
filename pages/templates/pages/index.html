@@ -6,6 +6,8 @@
 <section id="home" class="header-section">
     <div class="container">
         <div class="row">
+            {% for me in about_me %}
+
             <div class="col-md-12">
                 <div class="header-section-wrap">
                     <div class="header-view-on-mobile">
@@ -13,19 +15,19 @@
                         <h6>Instructor & Creative Web Developer</h6>
                     </div>
                     <div class="transform-banner position-relative">
-                        <img class="img header-img header-img-left wow imago" src="{{ about_me.thumbnail.url }}" alt=""
+                        <img class="img header-img header-img-left wow imago" src="{{ me.thumbnail.url }}" alt=""
                             style="height:550px;">
                     </div>
                     <div class="header-cont header-cont-right">
                         <div class="header-cont-absolute header-cont-absolute-right">
                             <div class="header-not-view-on-mobile">
-                                <h1 class="wow" data-splitting="">{{about_me.name}}</h1>
-                                <h6 class="wow" data-splitting="">{{about_me.title}}</h6>
+                                <h1 class="wow" data-splitting="">{{me.name}}</h1>
+                                <h6 class="wow" data-splitting="">{{me.title}}</h6>
                             </div>
                             <div class="header-cont-text">
                                 <!-- <p class="wow" data-splitting="" style="color: #d1d3df;"> {{ about_me.description|striptags}}</p> -->
                                 <p class="" data-splitting="" style="color: #d1d3df;">
-                                    {{ about_me.description|striptags}}</p>
+                                    {{ me.description|striptags}}</p>
                             </div>
                             <div class="btn-wrap text-center">
                                 <div class="btn-link"> <a href="/static/images/mainfolio.pdf">Download CV <i
@@ -36,6 +38,9 @@
                     </div>
                 </div>
             </div>
+              
+            {% endfor %}
+            
         </div>
     </div>
 </section>

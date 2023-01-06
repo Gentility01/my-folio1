@@ -21,9 +21,9 @@ class HomePageView(ListView):
     model = AboutMeModel
     context_object_name = "about_me"
 
-    def get_queryset(self):
-        context_object_name = AboutMeModel.objects.get(id=1)
-        return context_object_name
+    # def get_queryset(self):
+    #     context_object_name = AboutMeModel.objects.all()
+    #     return context_object_name
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
