@@ -33,7 +33,7 @@ class Schools(ExperienceAndSchoolModel):
 class AboutMeModel(NameBaseModel):
 
     email = models.EmailField(null=True)
-    phone = models.IntegerField(null=True, blank=True)
+    phone = models.BigIntegerField(null=True, blank=True)
     location = models.CharField(max_length=200, null=True)
     thumbnail = ResizedImageField(upload_to=MediaHelper.get_image_upload_path, verbose_name="Image")
     resume_photo = ResizedImageField(upload_to=MediaHelper.get_image_upload_path, verbose_name="Image", null=True, blank=True)
