@@ -37,7 +37,7 @@ class HomePageView(ListView):
 class ResumeListView(ListView):
     template_name = 'pages/resume_lists.html'
     model = AboutMeModel
-    context_object_name = 'about_me'
+    context_object_name = 'aboutme'
 
     def get_queryset(self):
         context_object_name = AboutMeModel.objects.get(id=1)

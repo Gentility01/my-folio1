@@ -80,14 +80,17 @@
      <footer class="nilsbrown-footer-section">
         <div class="container">
             <div class="row">
+                {% for aboutme in about_me %}
                 <div class="col-md-4">
                     <h5>Get in touch</h5>
-                    <p>{{ about_me.email}}</p>
+                    <p>{{ aboutme.email}}</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Locations</h5>
-                    <p>{{about_me.location}}</p>
+                    <p>{{aboutme.location}}</p>
                 </div>
+                {% endfor %}
+                
                 <div class="col-md-4">
                     <ul class="nilsbrown-footer-social-link">
                         <li><a href="https://github.com/Gentility01"><i class="ti-github"></i></a></li>
