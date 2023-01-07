@@ -12,11 +12,13 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-45">
+                    {% for aboutme in about_me %}
+
                     <div class="item">
                         <div class="wrap-block"> <span class="icon et-phone"></span>
                             <div class="text-block">
                                 <h5>Phone</h5>
-                                <p>+234 &nbsp; {{ about_me.phone }}</p>
+                                <p>+234 &nbsp; {{ aboutme.phone }}</p>
                             </div>
                         </div>
                     </div>
@@ -24,7 +26,7 @@
                         <div class="wrap-block"> <span class="icon et-map-pin"></span>
                             <div class="text-block">
                                 <h5>Address</h5>
-                                <p>{{ about_me.location}}</p>
+                                <p>{{ aboutme.location}}</p>
                             </div>
                         </div>
                     </div>
@@ -32,10 +34,13 @@
                         <div class="wrap-block"> <span class="icon et-notebook"></span>
                             <div class="text-block">
                                 <h5>G-Mail</h5>
-                                <p>{{ about_me.email }}</p>
+                                <p>{{ aboutme.email }}</p>
                             </div>
                         </div>
                     </div>
+                      
+                    {% endfor %}
+                    
                 </div>
                 <div class="col-md-5 offset-md-1">
                     <h5>Get in touch!</h5>
