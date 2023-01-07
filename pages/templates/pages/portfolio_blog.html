@@ -35,7 +35,7 @@
                                     {{ blog.category}}
                                 </div>
                                 <h4><a href="{% url 'blogdetail' blog.slug %}">{{ blog.name}}.</a></h4>
-                                <p>{{ blog.description|striptags|truncatewords:50|slice:":-4" }} <a
+                                <p>{{ blog.description|safe|truncatewords:50|slice:":-4" }} <a
                                         href="{% url 'blogdetail' blog.slug %}"> <button class="btn btn-sm">read
                                             more</button></a></p>
                             </div>
