@@ -88,16 +88,9 @@ WSGI_APPLICATION = 'folio.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
-}
+
+DATABASES = {}
 
 
 # Password validation
@@ -156,32 +149,6 @@ LOGIN_REDIRECT_URL = 'blogs'
 
 
 AUTH_USER_MODEL = 'user.UserModel'
-
-
-
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
-RECIPIENT_ADDRESS= os.environ.get("RECIPIENT_ADDRESS")
-EMAIL_USE_TLS = True
-
-
-
-
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-CLOUDINARY_STORAGE = {
-
-    'CLOUD_NAME': os.environ.get("CLOUD_NAME"),
-    'API_KEY':os.environ.get("API_KEY"),
-    'API_SECRET':os.environ.get("API_SECRET")
-}
-    
 
 
 
