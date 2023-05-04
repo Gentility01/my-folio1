@@ -107,7 +107,7 @@ class PortfolioDetailsView(DetailView):
 class PortfolioBlogView(LoginRequiredMixin, ListView):
     login_url = 'account/signin/'
     template_name = 'pages/portfolio_blog.html'
-    paginate_by = 5
+    paginate_by = 3
     model = PortfolioBlogModel
     context_object_name = "blogs"
     

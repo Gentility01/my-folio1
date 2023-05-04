@@ -2,7 +2,6 @@
 {% load static %}
 {% block content %}
 <!-- Blog -->
-<!-- Blog -->
 <section class="blog section-padding">
     <div class="container">
         <div class="row mb-45">
@@ -19,7 +18,8 @@
                     <div class="col-md-12">
                         <div class="item">
                             <div class="post-img">
-                                <a href="{% url 'blogdetail' blog.slug %}"> <img src="{{ blog.image.url }}" alt=""> </a>
+                                <a href="{% url 'blogdetail' blog.slug %}"> <img src="{{ blog.image.url }}" alt=""
+                                        style="height: 500px;"> </a>
                                 <div class="date">
                                     <a href="{% url 'blogdetail' blog.slug %}">
                                         <span>{{ blog.created_at|date:"Y"}}</span> <i>{{ blog.created_at|date:"m"}}</i>
@@ -29,20 +29,24 @@
                             <div class="post-cont">
                                 <div class="blog-post-categorydate-wrapper">
                                     <a href="blog.html">
-                                        <div>Blog</div>
+                                        <div>Blogs</div>
                                     </a>
                                     <div class="blog-post-categorydate-divider"></div>
-                                    <div>{{ blog.category}}</div>
+                                    {{ blog.category}}
                                 </div>
                                 <h4><a href="{% url 'blogdetail' blog.slug %}">{{ blog.name}}.</a></h4>
-                                <div><a href="{% url 'blogdetail' blog.slug %}"> <button
-                                            class="btn btn-outline-secondary">Read More</button></a></div>
+                                <p>{{ blog.description|safe|truncatewords:20|slice:":-4" }} <a
+                                        href="{% url 'blogdetail' blog.slug %}"> <button class="btn btn-sm">read
+                                            more</button></a></p>
                             </div>
                         </div>
                     </div>
+
                     {% endfor %}
 
                     {% include 'pages/paginator.html' %}
+
+
                 </div>
             </div>
             <!-- Sidebar -->
@@ -63,12 +67,16 @@
                                 <h5>Recent Posts</h5>
                             </div>
                             <ul class="recent">
+
                                 {% for posts in recent_posts %}
                                 <li>
                                     <div class="thum"> <img src="{{ posts.image.url}}" alt=""> </div> <a
                                         href="{% url 'blogdetail' posts.slug %}">{{ posts.name }}.</a>
                                 </li>
                                 {% endfor %}
+
+
+
 
                             </ul>
                         </div>
@@ -80,36 +88,36 @@
                                 <h5>Categories</h5>
                             </div>
                             <ul>
+
                                 {% for category in categories %}
                                 <li><a href="{% url 'categories' category.id %}"><i
                                             class="ti-angle-right"></i>{{ category.name}}</a></li>
                                 {% endfor %}
+
+
                             </ul>
                         </div>
                     </div>
-
-
                     <!-- <div class="col-md-12">
                         <div class="widget">
                             <div class="widget-title">
                                 <h5>Tags</h5>
                             </div>
                             <ul class="tags">
-                                {% for tag in tags.tags.all %}
-                                <li> {{ tag.name }} </li>
-                                {% endfor %}
-
+                                <li><a href="#">Website</a></li>
+                                <li><a href="#">Design</a></li>
+                                <li><a href="#">App</a></li>
+                                <li><a href="#">Branding</a></li>
+                                <li><a href="#">Development</a></li>
                             </ul>
                         </div>
                     </div> -->
-
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- Testiominals -->
-<!-- Testiominals -->
-{% include 'pages/testimonia.html' %}
+{% include 'pages/testimonia.html' %}!-- Clients -->
 {% include 'pages/client.html' %}
 {% endblock content %}
