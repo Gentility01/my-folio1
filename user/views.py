@@ -21,6 +21,7 @@ from django.urls import reverse_lazy
 #         'user_form':user_form
 #     }
 
+
 #     return render(request, "user/register.html", context)
 
 class SignupView(CreateView):
