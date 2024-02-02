@@ -68,7 +68,7 @@
                     <div class="item">
                         <a href="{{ service.get_absolute_url}}"> <span class="{{service.i_class}}"></span>
                             <h5>{{ service.name }}</h5>
-                            <p> {{ service.description| striptags }}.</p>
+                            <p> {{ service.description|safe }}.</p>
                             <div class="numb">0{{forloop.counter}}</div>
                         </a>
                     </div>
