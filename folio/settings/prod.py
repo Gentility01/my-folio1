@@ -13,7 +13,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['127.0.0.1', 'my-folio.onrender.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'myport-folio.onrender.com']
 
 
 
