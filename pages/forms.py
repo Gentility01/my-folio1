@@ -56,17 +56,19 @@ class ContactForm(forms.Form):
         msg = f'{name} with email {from_email} phone number :{phone} said:'
         msg += f'\n"{subject}"\n\n'
         msg += cl_data.get('message')
+        print(msg,'kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk')
         return subject, msg
 
     def send(self):
 
         subject, msg = self.get_info()
+        print("Recipient List:", [settings.RECIPIENT_ADDRESS], 'gggggggggggggggggggggggggggg')
         send_mail(
             subject=subject,
             message=msg,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[settings.RECIPIENT_ADDRESS],
-            fail_silently=True
+            fail_silently=False
         )
         
 
