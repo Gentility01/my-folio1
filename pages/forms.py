@@ -2,7 +2,7 @@ from django import forms
 from core.models import CommentsModel
 from django.conf import settings
 from django.core.mail import send_mail
-
+from django.core.validators import EmailValidator
 
 
 class CommentForm(forms.ModelForm):
@@ -20,7 +20,7 @@ class ContactForm(forms.Form):
         
         'placeholder':' name',
     }))
-    email = forms.EmailField(max_length=50, widget=forms.EmailInput(attrs={
+    email = forms.EmailField(validators=[EmailValidator()], widget=forms.EmailInput(attrs={
         
         'placeholder':'Your Email',
     }))
@@ -56,19 +56,18 @@ class ContactForm(forms.Form):
         msg = f'{name} with email {from_email} phone number :{phone} said:'
         msg += f'\n"{subject}"\n\n'
         msg += cl_data.get('message')
-
         return subject, msg
 
     def send(self):
 
         subject, msg = self.get_info()
-
         send_mail(
             subject=subject,
             message=msg,
             from_email=settings.EMAIL_HOST_USER,
             recipient_list=[settings.RECIPIENT_ADDRESS],
-            fail_silently=False
+            fail_silently=True
         )
+        
 
     
